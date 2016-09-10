@@ -1,13 +1,33 @@
 <template>
-  <form @submit.prevent="addMenu(inputMenu)">
-    <input :value="inputMenu" @input="onInput($event)">
-    <input type="submit" value="add">
-  </form>
+  <div>
+    <div class="">
+      <form @submit.prevent="addAndClearInputMenu()">
+        <input v-model="inputMenu">
+        <input type="submit" value="Add(By submit)">
+      </form>
+    </div>
+    <hr>
+    <div class="">
+      <input v-model="inputMenu" @keydown.enter="addAndClearInputMenu()">
+      <button @click="addAndClearInputMenu()">Add(By Enter)</button>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['inputMenu', 'addMenu', 'onInput']
+  props: ['addMenu'],
+  data () {
+    return {
+      inputMenu: ''
+    }
+  },
+  methods: {
+    addAndClearInputMenu: function () {
+      this.addMenu(this.inputMenu)
+      this.inputMenu = ''
+    }
+  }
 }
 </script>
 

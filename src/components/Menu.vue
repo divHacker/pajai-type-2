@@ -1,6 +1,8 @@
 <template>
-  {{ name }}
-  <button @click="removeMenu(index)">x</button>
+  <h1>
+    {{ name }}
+    <button @click="removeMenu(index)">x</button>
+  </h1>
 </template>
 
 <script>
